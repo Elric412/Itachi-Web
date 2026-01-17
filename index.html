@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth antialiased cursor-none">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ITACHI UCHIHA | The Truth Within The Darkness</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Geist:wght@100;300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              uchihablack: '#030303',
+              void: '#000000',
+              crimson: '#8a1c1c',
+              blood: '#590d0d',
+              sharingan: '#e62424',
+              moon: '#e8ebe4',
+              ash: '#a3a3a3',
+              subtle: '#1f1f1f'
+            },
+            fontFamily: {
+              cinzel: ['Cinzel', 'serif'],
+              cormorant: ['Cormorant Garamond', 'serif'],
+              geist: ['Geist', 'sans-serif'],
+            },
+            backgroundImage: {
+              'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+            },
+            animation: {
+              'pulse-slow': 'pulse 8s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+              'float': 'float 8s ease-in-out infinite',
+              'fog': 'fog 20s linear infinite',
+              'spin-slow': 'spin 12s linear infinite',
+            },
+            keyframes: {
+              float: {
+                '0%, 100%': { transform: 'translateY(0)' },
+                '50%': { transform: 'translateY(-15px)' },
+              },
+              fog: {
+                '0%': { transform: 'translateX(0) opacity(0.5)' },
+                '50%': { transform: 'translateX(-20px) opacity(0.8)' },
+                '100%': { transform: 'translateX(0) opacity(0.5)' },
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      body {
+        background-color: #030303;
+        color: #e5e5e5;
+        overflow-x: hidden;
+      }
+      
+      /* Global Cinematic Grain */
+      .bg-noise {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        pointer-events: none;
+        z-index: 50;
+        opacity: 0.05;
+        filter: contrast(120%) brightness(100%);
+      }
+
+      /* Custom Scrollbar - Minimal */
+      ::-webkit-scrollbar {
+        width: 4px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #030303;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #333;
+        border-radius: 0px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #8a1c1c;
+      }
+
+      .text-glow {
+        text-shadow: 0 0 30px rgba(230, 36, 36, 0.4);
+      }
+      
+      .vertical-text {
+        writing-mode: vertical-rl;
+        text-orientation: upright;
+      }
+
+      /* Utility for blend modes */
+      .mix-screen { mix-blend-mode: screen; }
+      .mix-overlay { mix-blend-mode: overlay; }
+      .mix-difference { mix-blend-mode: difference; }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
+    "framer-motion": "https://esm.sh/framer-motion@^12.26.2"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <!-- SVG Filters -->
+    <svg style="display: none;">
+      <filter id="noiseFilter">
+        <feTurbulence type="fractalNoise" baseFrequency="0.80" numOctaves="3" stitchTiles="stitch"/>
+      </filter>
+      <!-- Liquid Filter for Morphing -->
+      <filter id="goo">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+        <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="goo" />
+        <feComposite in="SourceGraphic" in2="goo" operator="atop"/>
+      </filter>
+    </svg>
+    <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
